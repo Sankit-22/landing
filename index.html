@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* General styles */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* Navigation bar styling */
+.custom-navbar {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-bottom: 2px solid #BEBEBE;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Left list */
+.left-list {
+    display: flex;
+    align-items: center;
+}
+
+.left-list button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.left-list img {
+    height: 25px;
+    margin-left: 10px;
+}
+
+/* Right list */
+.right-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    list-style-type: none;
+}
+
+.right-list .item-1,
+.right-list .item-2,
+.right-list .item-3,
+.right-list .item-4,
+.right-list .item-5,
+.right-list .item-6 {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.right-list .item-1:hover,
+.right-list .item-2:hover,
+.right-list .item-3:hover,
+.right-list .item-4:hover,
+.right-list .item-5:hover,
+.right-list .item-6:hover {
+    border-bottom: 2px solid #27C5FF;
+    color: #27C5FF;
+}
+
+/* Hero image styling */
+
+
+/* Media Queries */
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+    .right-list {
+        display: none; /* Hide menu items on smaller screens */
+    }
+
+    .left-list {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .custom-navbar {
+        padding: 10px 15px;
+    }
+
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+    .left-list button img {
+        height: 20px;
+    }
+
+    .img1 .text {
+        font-size: 16vw; /* Adjust text size for very small screens */
+    }
+}
+        #carouselExample {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            margin: 10px 0 10px 10px;
+            height: 65vh;
+            width: 60vw;
+            border-radius: 10px;
+            position: relative;
+        }
+        .carousel-inner {
+            border-radius: 10px;
+            height: 100%;
+            width: 100%;
+        }
+        .carousel-item {
+            height: 100%;
+            width: 100%;
+        }
+        .carousel-item img {
+            height: 100%;
+            width: 100%;
+            object-fit: fill;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .navigate-two{
+            display: flex;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #BEBEBE;
+        }
+        .part-two{
+            text-align: center;
+            position: relative;
+            background-image: url(img4.jpg) ;
+            margin: 10px 10px 10px 10px;
+            width: 40vw;
+            height: 65vh;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        .first-h2,.first-p{
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+        .first-h2{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .first-p{
+            position: absolute;
+            bottom: 40px;
+        }
+        .custom-navbar .btn-primary{
+            background-color: white;
+            border: none;
+        }
+        .custom-navbar .btn-primary img{
+            height: 29px;
+        }
+        .custom-navbar .btn-primary:hover{
+            background-color: white;
+        }
+        .features-nav{
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            height: 25vh;
+            text-align: center;
+            border-bottom:2px solid #BEBEBE;
+        }
+        .list-items{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 100%;
+            gap: 20px;
+            height: 100%;
+            width: 90vw;
+        }
+        .child1 img{
+            height: 30%;
+        }
+        .child2 img{
+            height: 30%;
+        }
+        .child3 img{
+            height: 30%;
+        }
+        .child4 img{
+            height: 30%;
+        }
+        .child5 img{
+            height: 30%;
+        }
+        .first-h3,.second-h3,.third-h3,.fourth-h3,.fifth-h3{
+            font-size: 20px;
+            font-weight: 550;
+        }
+        .child1,.child2,.child3,.child4,.child5{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-items:hover{
+            color: #27C5FF;
+        }
+        .time-line{
+            width: 1000px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .time-line::after{
+            content: "";
+            position: absolute;
+            right: 50%;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(#ff00e1,#ddff00);
+            border-radius: 50px;
+            animation: timelineAnimation 5s linear forwards;
+            z-index: -1;
+        }
+        @keyframes timelineAnimation{
+            0%{
+                height: 0;
+            }
+            100%{
+                height: 100%;
+
+            }
+        }
+        .timeline-container{
+            position: relative;
+            width: 50%;
+            padding: 10px 20px;
+            animation: timelinecontainerAnimation 1s linear forwards;
+            opacity: 0;
+            animation-delay: var(--dly);
+        }
+        @keyframes timelinecontainerAnimation {
+            0%{
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100%{
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+        .timeline-container:nth-child(even){
+            right: -50%;
+        }
+        .timeline-container:nth-child(odd)::before{
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: linear-gradient(#ff00e1,#ddff00);
+            top: 0;
+            right: -7px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .timeline-container:nth-child(even)::before{
+            content: "";
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            background: linear-gradient(#ff00e1,#ddff00);
+            top: 0;
+            left: -12.5px;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .text-content{
+            padding: 20px 30px;
+            box-shadow: 0 5px 10px #BEBEBE;
+            border-radius: 10px;
+            
+        }
+        .text-content h2{
+            font-size: 25px;
+        }
+        .text-content p{
+            font-size: 13px;
+            margin-top: 10px;
+        }
+        .second-h2{
+            font-weight: 600;
+            margin-left: 250px;
+            margin-bottom: 40px;
+        }
+        .news-grid-one{
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: auto;
+            width: 70vw;
+        }
+        .news-grid-two{
+            margin: auto;
+            margin-top: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: auto;
+            width: 70vw;
+        }
+        .card{
+            place-self: center;
+        }
+        .dropdown-toggle:hover{
+            background-color: #e4e3e3 !important;
+        }
+        .awarenessbtn button a:hover{
+            background-color: #e4e3e3 !important;
+        }
+        .awarenessbtn button:hover{
+            background-color: #e4e3e3 !important;
+        }
+        .awarenessbtn:hover{
+            background-color: #e4e3e3 !important;
+        }
+        .faq-section{
+            margin: auto;
+            height: auto;
+            width: 70vw;
+        }
+        .faq-header{
+            margin-top: 30px;
+        }
+        .accordion{
+            margin-top: 30px;
+        }
+        .accordion-button:hover{
+            background-color: #e4e3e3 !important;
+        }
+        .athletic-toolkit{
+            height: 100vh;
+            width: 100vw;
+        }
+        .footer{
+            height: 60vh;
+            width: 100vw;
+            background-color: rgb(32, 27, 27);
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-navbar">
+        <div class="left-list"> <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"><img src="icon.svg" alt=""></button>
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Welcome to Anti-Doping</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <p>Ensuring a dopefree environment for athletes and sports</p>
+
+                <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="index_result.html" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Result Management</a></button>
+                  </div><br>
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="index_resources.html" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Resources</a></button>
+                  </div><br>
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="index_testing.html" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Athlete Testing</a></button>
+                  </div><br>
+                
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Awareness and health risks</a></button>
+                  </div>
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Antidoping Disciplinary panel</a></button>
+                  </div>
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Educational videos</a></button>
+                  </div>
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Therapeutic Use Exemption</a></button>
+                  </div>
+                  <div class="btn awarenessbtn" style="background-color: white; border: none;">
+                    <button class="awarenessbtn2" style="border: none; background-color: white; padding: 0;"><a href="https://docs.google.com/forms/d/1IpUZLCEWSLM-SlGfUqPGC4GBnnVWrfMVqBVOrTHXGHk/edit" class="awarenessanchor" style="color: black; text-decoration: none; background-color: white; border: none;">Report And Feedback</a></button>
+                  </div>
+              </div>
+            </div>DopingDefiance <a href="https://nadaindia.yas.gov.in/" style="margin-left: 30px;">
+                <img width="180" height="45" src="https://nadaindia.yas.gov.in/wp-content/uploads/GOV-NADA-Logo-01-1-1024x305.png" class="attachment-large size-large wp-image-6456" alt="" srcset="https://nadaindia.yas.gov.in/wp-content/uploads/GOV-NADA-Logo-01-1-1024x305.png 1024w, https://nadaindia.yas.gov.in/wp-content/uploads/GOV-NADA-Logo-01-1-300x89.png 300w, https://nadaindia.yas.gov.in/wp-content/uploads/GOV-NADA-Logo-01-1-768x229.png 768w, https://nadaindia.yas.gov.in/wp-content/uploads/GOV-NADA-Logo-01-1-1536x458.png 1536w, https://nadaindia.yas.gov.in/wp-content/uploads/GOV-NADA-Logo-01-1.png 1730w" sizes="(max-width: 800px) 100vw, 800px"></a></div>
+        <div class="right-list">
+            <div class="item-1"><a href="index.html">HOME</a></div>
+            <div class="item-2">ABOUT</div>
+            <div class="item-3">SERVICES</div>
+            <div class="item-4">BLOG</div>
+            <div class="item-5">NEWS</div>
+            <div class="item-6">PARTNERS</div>
+        </div>
+    </div>  
+    <div class="navigate-two">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img1.webp" class="d-block" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="img2.webp" class="d-block" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img src="img3.webp" class="d-block" alt="Third slide">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="part-two">
+            <h2 class="first-h2">Lorem ipsum dolor</h2>
+            <p class="first-p">Lorem ipsum dolor sit amet consectetur. Nunc sit mattis non enim nam. Neque convallis semper nibh sit Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit accusamus impedit itaque recusandae iste, modi neque omnis? Expedita, accusantium facilis!</p>
+        </div>
+    </div>
+    <div class="features-nav">
+        <div class="list-items">
+            <div class="child1 feature-items">
+                <img src="book.svg" alt="">
+                <h3 class="first-h3">Resources</h3>
+            </div>
+            <div class="child2 feature-items">
+                <img src="ar.svg" alt="">
+                <h3 class="second-h3">Augmented Reality</h3>
+            </div>
+            <div class="child3 feature-items">
+                <img src="book.svg" alt="">
+                <h3 class="third-h3">Interactive Learning</h3>
+            </div>
+            <div class="child4 feature-items">
+                <img src="community.svg" alt="">
+                <h3 class="fourth-h3">Community Forum</h3>
+            </div>
+            <div class="child5 feature-items">
+                <img src="survey.svg" alt="">
+                <h3 class="fifth-h3">Survey</h3>
+            </div>
+        </div>
+    </div>
+    <section class="time-line">
+        <div class="timeline-container">
+            <div class="text-content">
+                <h2 class="first-event">EVENT ONE</h2>
+                <p class="first-event-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia eos possimus quas blanditiis, cum molestiae! Totam cupiditate quisquam recusandae.</p>
+            </div>
+        </div>
+        <div class="timeline-container" style="--dly:1s">
+            <div class="text-content">
+                <h2 class="first-event">EVENT ONE</h2>
+                <p class="first-event-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia eos possimus quas blanditiis, cum molestiae! Totam cupiditate quisquam recusandae.</p>
+            </div>
+        </div>
+        <div class="timeline-container" style="--dly:2s">
+            <div class="text-content">
+                <h2 class="first-event">EVENT ONE</h2>
+                <p class="first-event-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia eos possimus quas blanditiis, cum molestiae! Totam cupiditate quisquam recusandae.</p>
+            </div>
+        </div>
+        <div class="timeline-container" style="--dly:3s">
+            <div class="text-content">
+                <h2 class="first-event">EVENT ONE</h2>
+                <p class="first-event-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia eos possimus quas blanditiis, cum molestiae! Totam cupiditate quisquam recusandae.</p>
+            </div>
+        </div>
+        <div class="timeline-container" style="--dly:4s">
+            <div class="text-content">
+                <h2 class="first-event">EVENT ONE</h2>
+                <p class="first-event-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia eos possimus quas blanditiis, cum molestiae! Totam cupiditate quisquam recusandae.</p>
+            </div>
+        </div>
+        <div class="timeline-container" style="--dly:5s">
+            <div class="text-content">
+                <h2 class="first-event">EVENT ONE</h2>
+                <p class="first-event-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem mollitia eos possimus quas blanditiis, cum molestiae! Totam cupiditate quisquam recusandae.</p>
+            </div>
+        </div>
+    </section>
+    <h2 class="second-h2">
+        Latest News
+    </h2>
+    <div class="news-grid-one">
+        <div class="card card-one" style="width: 18rem;">
+            <img src="img2.webp" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        <div class="card card-two" style="width: 18rem;">
+            <img src="img1.webp" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+        <div class="card card-three" style="width: 18rem;">
+            <img src="img3.webp" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+          </div>
+    </div>
+          <div class="news-grid-two">
+            <div class="card card-four" style="width: 18rem;">
+                <img src="img1.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+              </div>
+            <div class="card card-five" style="width: 18rem;">
+                <img src="img2.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Read More</a>
+                </div>
+              </div>
+            <div class="card card-six" style="width: 18rem;">
+                <img src="img3.webp" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Read More..</a>
+                </div>
+              </div>
+          </div>
+    <hr>
+    <div class="faq-section">
+        <div class="faq-header" style="text-align: center;"><h2 class="fourth-h2" style="font-weight: bold;">Frequently Asked Questions</h2></div>
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    Question 1
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Question 2
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Question 3
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    Question 4
+                </button>
+              </h2>
+              <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                  Question 5
+                </button>
+              </h2>
+              <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                    Question 6
+                </button>
+              </h2>
+              <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="athletic-toolkit">
+
+    </div>
+    <div class="footer">
+        
+    </div>
+    <script src="script.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
